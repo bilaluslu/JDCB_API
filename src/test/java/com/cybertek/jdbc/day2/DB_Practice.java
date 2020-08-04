@@ -21,6 +21,7 @@ public class DB_Practice {
         }
 
         System.out.println("columnCount = " + DB_Utility.getColumnCNT() );
+        //3
 
     }
 
