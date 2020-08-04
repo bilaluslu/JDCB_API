@@ -7,6 +7,27 @@ public class DB_Utility {
     // adding static field so we can access in all static methods
     private static Connection conn ;
     private static ResultSet rs;
+    /*
+        * a method to get the column of the current ......
+        *
+        *  getColumnCNT()
+     */
+
+    public static int getColumnCNT(){
+
+        int columnCount = 0;
+        ResultSetMetaData rsmd = null;
+        try {
+            rsmd = rs.getMetaData();
+            columnCount = rsmd.getColumnCount();
+        } catch (SQLException throwables) {
+            System.out.println("ERROR WHILE COUNTING THE COLUMNS");
+            throwables.printStackTrace();
+        }
+
+
+        return columnCount;
+    }
 
     /*
      * a static method to create connection
