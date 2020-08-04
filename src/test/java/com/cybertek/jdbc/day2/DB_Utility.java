@@ -68,6 +68,10 @@ public class DB_Utility {
         return result ;
     }
 
+    /*
+     * @param rowNum the row number you want the list from
+     * @return List of String that contains the row data
+     */
 
     //  Getting the entire  row as List<String>
     public static List<String> getRowDataAsList(int rowNum){
@@ -91,6 +95,20 @@ public class DB_Utility {
         return rowDataList;
     }
 
+
+    public static int getRowCount(){
+        int rowCount = 0;
+
+        try {
+            rs.last();
+            rowCount = rs.getRow();
+            // moving back the cursor to before first location just in case
+            rs.beforeFirst();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return rowCount;
+    }
 
     /*
      * a method to display all the data in the result set
