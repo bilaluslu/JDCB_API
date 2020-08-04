@@ -9,6 +9,65 @@ public class DB_Utility {
     private static ResultSet rs;
 
     /*
+     * Getting single column cell value at certain row
+     * row 2 column 3  -->> the data
+     * */
+
+    /**
+     * Getting single column cell value at certain row
+     * @param rowNum    row number we want to get data from
+     * @param columnIndex  column index we want to get the data from
+     * @return the data in String
+     */
+    public static String getColumnDataAtRow (int rowNum , int columnIndex){
+
+        /*
+        take home tasks
+        improve this method and check for valid rowNum and ColumnIndex
+        if invalid return emptyString
+         */
+
+        String result = "" ;
+        try {
+            rs.absolute( rowNum ) ;
+            result = rs.getString( columnIndex ) ;
+
+        } catch (SQLException e) {
+            System.out.println("ERROR WHILE getColumnDataAtRow ");
+            e.printStackTrace();
+        }
+
+        return result ;
+    }
+
+    /*
+     * @param rowNum    row number we want to get data from
+     * @param columnName  column index we want to get the data from
+     * @return the data at that row with that column name
+     */
+    public static String getColumnDataAtRow (int rowNum , String columnName){
+
+        /*
+        take home tasks
+        improve this method and check for valid rowNum and ColumnIndex
+        if invalid return emptyString
+         */
+
+        String result = "" ;
+        try {
+            rs.absolute( rowNum ) ;
+            result = rs.getString( columnName ) ;
+
+        } catch (SQLException e) {
+            System.out.println("ERROR WHILE getColumnDataAtRow ");
+            e.printStackTrace();
+        }
+
+        return result ;
+    }
+
+
+    /*
      * a method to display all the data in the result set
      *
      * */

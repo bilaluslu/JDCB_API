@@ -20,6 +20,9 @@ public class DB_Practice2 {
 
         DB_Utility.displayAllData();    // if we call again it will start over
 
+        System.out.println( "Given Row number and Column Index --> " + DB_Utility.getColumnDataAtRow(3, 2));
+        System.out.println( "Given Row number and Column Name  --> " + DB_Utility.getColumnDataAtRow(3, "REGION_NAME"));
+
 
 /*
         // get the first row data  | without knowing the column names
