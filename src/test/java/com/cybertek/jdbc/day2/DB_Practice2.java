@@ -15,6 +15,12 @@ public class DB_Practice2 {
         DB_Utility.displayAllData();
 
 
+        //move resultset cursor to second row
+        rs.absolute(2);
+
+        DB_Utility.displayAllData();    // if we call again it will start over
+
+
 /*
         // get the first row data  | without knowing the column names
         int colCount = DB_Utility.getColumnCNT() ;
