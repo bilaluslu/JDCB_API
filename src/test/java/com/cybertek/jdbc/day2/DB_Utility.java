@@ -1,6 +1,8 @@
 package com.cybertek.jdbc.day2;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DB_Utility {
 
@@ -64,6 +66,29 @@ public class DB_Utility {
         }
 
         return result ;
+    }
+
+
+    //  Getting the entire  row as List<String>
+    public static List<String> getRowDataAsList(int rowNum){
+
+        List<String> rowDataList = new ArrayList<>();
+
+        // how to move to that Row with rowNum
+        try {
+            rs.absolute( rowNum );
+
+            // iterate over each and every column and add the value to the list
+            for (int i = 1 ; i <= getColumnCNT() ; i++) {
+                rowDataList.add( rs.getString(i) );
+            }
+            rs.beforeFirst();   // moving the cursor back to before first location just in case
+        } catch (SQLException throwables) {
+            System.out.println( "ERROR WHILE getRowDataAsList" );
+            throwables.printStackTrace();
+        }
+
+        return rowDataList;
     }
 
 
