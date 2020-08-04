@@ -1,5 +1,6 @@
 package com.cybertek.jdbc.day2;
 
+import java.security.PublicKey;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,70 @@ public class DB_Utility {
     // adding static field so we can access in all static methods
     private static Connection conn ;
     private static ResultSet rs;
+
+    /*
+       * we want to store certain row data as a map
+       * give me number 3 row --> Map<String,String>  ( region_id :3 , region_name : Asia )
+     */
+
+
+
+
+
+
+    /*
+     * @param columnIndex the column you want to get a list out of
+     * @return  List of String that contains entire column data from 1st row to last row
+     */
+    public static List<String> getColumnDataAsList(String columnName){
+
+        List<String> columnDataList = new ArrayList<>();
+        try {
+            rs.beforeFirst();   // moving back the cursor to before first location just in case
+
+            while ( rs.next() ) {
+
+                String data = rs.getString(columnName);
+                // getting the data from that column and adding to the list
+                columnDataList.add( data );
+            }
+        } catch (SQLException throwables) {
+            System.out.println("ERROR WHILE getColumnDataAsList ");
+            throwables.printStackTrace();
+        }
+
+
+        return columnDataList;
+    }
+
+
+    /*
+     * @param columnIndex the column you want to get a list out of
+     * @return  List of String that contains entire column data from 1st row to last row
+     */
+    public static List<String> getColumnDataAsList(int columnIndex){
+
+        List<String> columnDataList = new ArrayList<>();
+        try {
+            rs.beforeFirst();   // moving back the cursor to before first location just in case
+
+        while ( rs.next() ) {
+
+            // getting the data from that column and adding to the list
+            columnDataList.add(rs.getString(columnIndex));
+        }
+            } catch (SQLException throwables) {
+            System.out.println("ERROR WHILE getColumnDataAsList ");
+                throwables.printStackTrace();
+            }
+
+
+        return columnDataList;
+    }
+
+
+
+
 
     /*
      * Getting single column cell value at certain row

@@ -23,7 +23,12 @@ public class DB_Practice2 {
         System.out.println( "Given Row number and Column Index --> " + DB_Utility.getColumnDataAtRow(3, 2));
         System.out.println( "Given Row number and Column Name  --> " + DB_Utility.getColumnDataAtRow(3, "REGION_NAME"));
 
+
+        DB_Utility.runQuery("SELECT * FROM EMPLOYEES");
         System.out.println( "Given Row number to get all row --> " + DB_Utility.getRowDataAsList(4) );
+
+        System.out.println( "Given column number to get all column --> " + DB_Utility.getColumnDataAsList(2));
+        System.out.println( "Given column name to get all column --> " + DB_Utility.getColumnDataAsList("FIRST_NAME"));
 
 /*
         // get the first row data  | without knowing the column names
